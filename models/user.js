@@ -1,4 +1,5 @@
 const Sequelize = require('sequelize');
+const Comment = require('./comment');
 
 class User extends Sequelize.Model {
     static initiate(sequelize) {
@@ -37,7 +38,7 @@ class User extends Sequelize.Model {
     }
 
     static association(db) {
-        
+        db.User.hasMany(db.Comment, { foreignKey: 'commenter', sourceKey: 'id' });
     }
 }
 
